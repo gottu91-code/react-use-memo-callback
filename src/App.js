@@ -7,6 +7,10 @@ export const App = () => {
   const result01 = () => setCount01(count01 + 1)
   const result02 = () => setCount02(count02 + 1)
 
+  useEffect(() => {
+    console.log('useEffectだよ,レンダリングが終わった後に実行しているよ')
+  }, [count02]);
+
   const square = useMemo(() => {
     // 重い処理
     let i = 0
@@ -15,9 +19,7 @@ export const App = () => {
     return count02 * count02
   }, [count02]);
 
-  useEffect(() => {
-    console.log('useEffectだよ')
-  }, [count02]);
+  console.log('return文の直前だよ');
 
   return (
     <>
@@ -26,7 +28,7 @@ export const App = () => {
       {/* useMemoを使用しない場合 */}
       {/* <div>square: {square()}</div> */}
       {/* useMemoを使用する場合 */}
-      {/* <div>square: {square}</div> */}
+      <div>square: {square}</div>
       <button onClick={result01}>increment</button>
       <button onClick={result02}>increment</button>
     </>
