@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useMemo, useState} from 'react'
 
-function App() {
+export const App = () => {
+  const [count01, setCount01] = useState(0)
+  const [count02, setCount02] = useState(0)
+
+  console.log('aaaaaa');
+
+  const result01 = () => setCount01(count01 + 1)
+  const result02 = () => setCount02(count02 + 1)
+
+  const square = () => {
+    let i = 0
+    while (i < 2000000000) i++
+    return count02 * count02
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <div>result01: {count01}</div>
+      <div>result02: {count02}</div>
+      {/* <div>square: {square()}</div> */}
+      <div>square: {square()}</div>
+      {console.log('adsfadsf')}
+      <button onClick={result01}>increment</button>
+      <button onClick={result02}>increment</button>
+    </>
+  )
 }
-
-export default App;
